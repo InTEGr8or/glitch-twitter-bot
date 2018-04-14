@@ -1,12 +1,29 @@
 <h1>Twitter Bot Webhooks API admin panel v0.1</h1>
-<ul>
-  <li>
-    <a href="https://{{project-name}}.glitch.me/webhooks/twitter">Register webhook</a>
-  </li>
-  <li>
-    <a href="https://glitch.com/edit/#!/{{project-name}}" target="_blank">Check the source code/logs on Glitch</a>
-  </li>
+<ul id="conversation">
 </ul>
+<div>
+    <div id="get-response" class="text-input" data-href="https://{{project-name}}.glitch.me/get-response">
+      <div>
+        Enter a comment
+      </div>
+      <input id="comment" autocomplete="off" type="text" />
+    </div>
+</div>
+
 <pre>
   <code>{{message}}</code>
 </pre>
+<div id="admin" style="padding-top">
+  <h3>
+    Admin
+  </h3>
+  <ul>
+    <li>
+      <a href="https://{{project-name}}.glitch.me/webhooks/twitter">Register webhook</a>
+    </li>
+  <li>
+    <a href="https://glitch.com/edit/#!/{{project-name}}" target="_blank">Check the source code/logs on Glitch</a>
+  </li>
+
+  </ul>
+</div>

@@ -22,8 +22,11 @@ module.exports = {
     });  
   },
   register_webhook: function(res){
-    T.post('account_activity/webhooks', { url: `https://${process.env.PROJECT_NAME}.glitch.me/webhooks/twitter` }, function(err, data, response) {
+    var postData = { url: `https://${process.env.PROJECT_NAME}.glitch.me/webhooks/twitter` };
+    T.post('account_activity/webhooks', postData, function(err, data, response) {
       if (err){
+        console.log("POST_DATA", {postData});
+        console.log("T:", {T});
         console.log('GET webhooks ERROR (1)\n', {err});
         switch(err.message){
           case 'Too many resources already created.':
