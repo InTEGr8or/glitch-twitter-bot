@@ -6,6 +6,9 @@ var express = require('express'),
     responder = require(__dirname + "/responder/app.js");
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// http://expressjs.com/en/starter/static-files.html
+app.use(express.static('public'));
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 
