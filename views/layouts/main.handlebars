@@ -9,6 +9,10 @@
   <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->  
   <link rel="stylesheet" href="css/styles.css">
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro|Merriweather+Sans|Lobster" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -20,5 +24,29 @@
       {{{body}}}
     </div>
   </section>
+  
+  <script>
+    $(document).ready(function(){
+      var getResponse = function(){
+        var comment = $(".text-input input").val();
+        if(!comment){return false;}
+        $("#conversation").append(`<li>Me: <strong>${comment}</strong></li>`);
+        $.get(`${$("#get-response").data("href")}?q=${comment}`, function(data){
+          $("#conversation").append(`<li>Русский бот: <strong>${data}</strong></li>`);
+        });
+        $(".text-input input").val("");
+        $(".text-input input").focus();      
+      }
+      $(".text-input").on("blur enter", "input", function(event, data){
+        getResponse();
+      })
+      $(document).keypress(function(e){
+        if(e.which == 13){
+          getResponse();
+        }
+      })
+    });
+  </script>
+
 </body>
 </html>

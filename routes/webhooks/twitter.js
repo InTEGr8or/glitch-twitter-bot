@@ -7,14 +7,14 @@ var path = require('path'),
     util = require('util'),
     app = express(),   
     twitter = require(__dirname + '/../../twitter.js'),
-    twitterbot = require(__dirname + '/../../twitterbot.js');
+    twitterbot = require(__dirname + '/../../twitterbot.js'),
+    responder = require(__dirname + "/../../responder/app.js");
 
 router.get('/', function(req, res) {
 /* Handle crc_token. */
   console.log('GET /webhooks/twitter');
   var res = res,
       crc_token = req.param('crc_token');
-
   if (crc_token){
     console.log('crc_token', crc_token);
     var response_token = `sha256=${crypto.createHmac('sha256', process.env.CONSUMER_SECRET).update(crc_token).digest('base64')}`;
